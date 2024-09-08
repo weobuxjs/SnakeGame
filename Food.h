@@ -19,7 +19,7 @@ public:
     {
         return Tex;
     }
-    void isEaten()
+    void getEaten()
     {
         Collision.x = rand()%1200;
         Collision.y = rand()% 700;

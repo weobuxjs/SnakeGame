@@ -85,6 +85,10 @@ public:
         Head.changeX(MOVING_SPEED*Head.getHorizontalAxis());
         Head.changeY(MOVING_SPEED*Head.getVerticalAxis());
     }
+    void addTiles()
+    {
+        SnakeTiles.push_back(SnakeTile(SnakeTiles[SnakeTiles.size()-1].getX(),SnakeTiles[SnakeTiles.size()-1].getY(),SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr));
+    }
     SnakeTile getHead()
     {
         return Head;
