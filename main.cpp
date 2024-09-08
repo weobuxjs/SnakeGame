@@ -13,11 +13,16 @@ int main(int argc, char*argv[])
             }
              mainSnake.HandleInput(event);
         }
+        
         SDL_SetRenderDrawColor(renderer,0,0,0,0);
         SDL_RenderClear(renderer);
         mainSnake.Update();
+        
         mainSnake.render(renderer);
+        mainFood.render(renderer);
+
         SDL_RenderPresent(renderer);
+        SDL_Delay(19);
     }
     SDL_Quit();
     return 0;
