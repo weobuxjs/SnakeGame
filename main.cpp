@@ -2,7 +2,16 @@
 using namespace std;
 int main(int argc, char*argv[])
 {
-    SDL_Init(SDL_INIT_EVERYTHING);
+    if(SDL_Init(SDL_INIT_GAMECONTROLLER)< 0)
+    {
+        cerr<<"Error: "<<SDL_GetError()<<endl;
+        return 0;
+    }
+    if(Mix_OpenAudio(44100,AUDIO_S16SYS,2,2048)<0)
+    {
+        cerr<<"Error: "<<SDL_GetError()<<endl;
+    }
+    Mix_Music*test=Mix_LoadMUS("assets/eatSound.mp3");
     while(isRunning==true)
     {
 
@@ -20,6 +29,7 @@ int main(int argc, char*argv[])
         mainSnake.render(renderer);
         if(CheckCollsion(mainSnake.getHead().getCollision(),mainFood.getCollision()))
         {
+            Mix_PlayMusic(test,1);
             mainFood.getEaten();
             mainSnake.addTiles();
         }
@@ -27,7 +37,6 @@ int main(int argc, char*argv[])
         SDL_RenderPresent(renderer);
         SDL_Delay(19);
         mainCounter.update();
-        cout<<mainCounter.fps<<endl;
         if(SDL_GetTicks() - mainCounter.time >= 1000 )mainCounter.reset();
     }
     SDL_Quit();
