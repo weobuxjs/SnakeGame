@@ -3,6 +3,7 @@
 #include<SDL_mixer.h>
 #include<cstdlib>
 #include<iostream>
+#include<SDL2\SDL_ttf.h>
 #include"Snake.h"
 #include"Food.h"
 #include"FPScounter.h"

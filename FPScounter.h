@@ -1,21 +1,24 @@
+#ifndef FPSCOUNTER_H
+#define FPSCOUNTER_H
 #include<SDL.h>
 struct FPScounter
 {
-    double time;
-    double frame=0;
-    double fps;
-    FPScounter(int t)
+    double time,fps;
+    unsigned long long frame;
+    FPScounter()
     {
-        time = t;
+        frame=0;
+        time= SDL_GetTicks();
     }
     void reset()
     {
-        frame=0;
-        time=SDL_GetTicks();
+        frame = 0;
+        time =SDL_GetTicks();
     }
     void update()
     {
         frame++;
-        fps= double(frame/((SDL_GetTicks()- time)/1000.f));
+        fps= frame/((SDL_GetTicks()- time) /1000);
     }
 };
+#endif

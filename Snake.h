@@ -1,3 +1,5 @@
+#ifndef SNAKE_H
+#define SNAKE_H
 #pragma once
 #include"SnakeTile.h"
 #include<vector>
@@ -8,7 +10,7 @@ const int SNAKE_TILE_HEIGHT= 10;
 class Snake
 {
 public:
-    bool IS_HORIZONTAL=false;
+    
     Snake()
     {   
         Head= SnakeTile(600,350,SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr);
@@ -96,4 +98,6 @@ public:
 private:
     std::vector<SnakeTile> SnakeTiles;
     SnakeTile Head;
+    bool IS_HORIZONTAL=false;
 };
+#endif

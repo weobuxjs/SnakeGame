@@ -1,3 +1,4 @@
+#if TWIST_POSITION
 struct TwistPosition
 {
     int x;
@@ -11,5 +12,5 @@ struct TwistPosition
         Horizontal=right;
         Vertical =up;
     }
-    
 };
+#endif

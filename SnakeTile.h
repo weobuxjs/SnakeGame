@@ -1,3 +1,5 @@
+#ifndef SNAKE_TILE_H
+#define SNAKE_TILE_H
 #pragma once
 #include<SDL.h>
 class SnakeTile
@@ -22,10 +24,14 @@ public:
     void changeX(int x)
     {
         Collision.x+=x;
+        if(Collision.x >= 1200) Collision.x=0;
+        else if(Collision.x <= 0) Collision.x=1200;
     }
     void changeY(int x)
     {
-        Collision.y+=x;
+        Collision.y+= x;
+        if(Collision.y >= 700 ) Collision.y=0;
+        else if (Collision.y <= 0) Collision.y=700;
     }
     int getX() 
     {
@@ -60,3 +66,4 @@ private:
     int Vertical;
     SDL_Texture* snakeTex;
 };
+#endif

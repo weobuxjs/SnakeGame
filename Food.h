@@ -1,3 +1,5 @@
+#ifndef FOOD_H
+#define FOOD_H
 #include<SDL.h>
 class Food
 {
@@ -11,6 +13,10 @@ public:
         tex=Tex;
         lastTick=0;
     }
+    Food()
+    {
+        
+    }
     SDL_Rect& getCollision()
     {
         return Collision;
@@ -21,8 +27,8 @@ public:
     }
     void getEaten()
     {
-        Collision.x = rand()%1200;
-        Collision.y = rand()% 700;
+        Collision.x = int(rand()%1200/5)*5;
+        Collision.y = int(rand()%700/5)*5;
     }
     bool IsOnCoolDown()
     {
@@ -48,3 +54,4 @@ private:
     int lastTick;
     int times=0;
 };
+#endif
