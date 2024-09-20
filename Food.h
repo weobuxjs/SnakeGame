@@ -27,8 +27,8 @@ public:
     }
     void getEaten()
     {
-        Collision.x = int(rand()%1200/5)*5;
-        Collision.y = int(rand()%700/5)*5;
+        Collision.x = int(rand()%1200/20)*20;
+        Collision.y = int(rand()%700/20)*20;
     }
     bool IsOnCoolDown()
     {

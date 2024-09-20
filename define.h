@@ -33,4 +33,4 @@ SDL_Event event;
 bool isRunning=true;
 Snake mainSnake;
 Food mainFood(rand()%1200 , rand() %700, 7,7,nullptr);
-FPScounter mainCounter(SDL_GetTicks());
+FPScounter mainCounter;

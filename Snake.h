@@ -1,12 +1,12 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 #pragma once
-#include"SnakeTile.h"
 #include<vector>
+#include"SnakeTile.h"
 #include"Position.h"
-const int MOVING_SPEED = 10;
-const int SNAKE_TILE_WIDTH= 10;
-const int SNAKE_TILE_HEIGHT= 10;
+const int MOVING_SPEED = 20;
+const int SNAKE_TILE_WIDTH= 20;
+const int SNAKE_TILE_HEIGHT= 20;
 class Snake
 {
 public:
@@ -14,10 +14,10 @@ public:
     Snake()
     {   
         Head= SnakeTile(600,350,SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr);
-        SnakeTiles.push_back(SnakeTile(Head.getX(),Head.getY(),SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr));
+        SnakeTiles.push_back(SnakeTile(Head.getX(),Head.getY()+SNAKE_TILE_HEIGHT,SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr));
         for(int i=1;i<3;i++)
         {
-            SnakeTiles.push_back(SnakeTile(SnakeTiles[i-1].getX(),SnakeTiles[i-1].getY(),SNAKE_TILE_HEIGHT,SNAKE_TILE_WIDTH,nullptr));
+            SnakeTiles.push_back(SnakeTile(SnakeTiles[i-1].getX(),SnakeTiles[i-1].getY()+SNAKE_TILE_HEIGHT,SNAKE_TILE_WIDTH,SNAKE_TILE_HEIGHT,nullptr));
         }
     }
     std::vector<SnakeTile> getSnakeTiles()
@@ -72,20 +72,11 @@ public:
         }
     }
     void Update()
-    {
-        for(int i=SnakeTiles.size()-1;i>=0;i--)
-        {
-            if(i==0)
-            {
-                SnakeTiles[i].setPos(Head.getX(),Head.getY());
-            }
-            else
-            {
-                SnakeTiles[i].setPos(SnakeTiles[i-1].getX(),SnakeTiles[i-1].getY());
-            }
-        }
+    {              
+        SnakeTiles.insert(SnakeTiles.begin(),Head);  
+        SnakeTiles.pop_back();      
         Head.changeX(MOVING_SPEED*Head.getHorizontalAxis());
-        Head.changeY(MOVING_SPEED*Head.getVerticalAxis());
+        Head.changeY(MOVING_SPEED*Head.getVerticalAxis());    
     }
     void addTiles()
     {

@@ -3,7 +3,7 @@ Game::Game()
 {
     window= SDL_CreateWindow("SNAKE GAME",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,1200,700,SDL_WINDOW_SHOWN);
     renderer=SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-    mainFood= Food(rand()%1200 , rand() %700, 7,7,nullptr);
+    mainFood= Food(rand()%1200 , rand() %700, 20,20 ,nullptr);
     eatSound=Mix_LoadMUS("assets/eatSound.mp3");
     isRunning = true;
 }

@@ -10,6 +10,8 @@ public:
         Collision.x=pX;
         Collision.y=pY;
         Collision.w=W;Collision.h=H;
+        preHorizontal=0;
+        preVertical =-1;
         Horizontal=0;
         Vertical=-1;
     }
@@ -24,14 +26,14 @@ public:
     void changeX(int x)
     {
         Collision.x+=x;
-        if(Collision.x >= 1200) Collision.x=0;
-        else if(Collision.x <= 0) Collision.x=1200;
+        if(Collision.x > 1199) Collision.x=1;
+        else if(Collision.x < 1) Collision.x=1199;
     }
     void changeY(int x)
     {
         Collision.y+= x;
-        if(Collision.y >= 700 ) Collision.y=0;
-        else if (Collision.y <= 0) Collision.y=700;
+        if(Collision.y > 699 ) Collision.y=1;
+        else if (Collision.y < 1) Collision.y=699;
     }
     int getX() 
     {
@@ -54,16 +56,33 @@ public:
     {
         return Vertical;
     }
+    int getPreHorizontalAxis()
+    {
+        return preHorizontal;
+    }
+    int getPreVerticalAxis()
+    {
+        return preVertical;
+    }
+    void swap()
+    {
+        preVertical = Vertical;
+        preHorizontal = Horizontal;
+    }
     void setAxis( int horizontal, int vertical)
     {
-        this->Horizontal=horizontal;
-        this->Vertical=vertical;
+        preHorizontal = Horizontal;
+        preVertical =Vertical;
+        Horizontal=horizontal;
+        Vertical=vertical;
     }
     SDL_Texture*getTex() {return snakeTex;}; 
 private:
     SDL_Rect Collision;
     int Horizontal;
     int Vertical;
+    int preHorizontal;
+    int preVertical;
     SDL_Texture* snakeTex;
 };
 #endif
